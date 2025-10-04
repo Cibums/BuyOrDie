@@ -7,6 +7,8 @@ public class UserInterfaceController : MonoBehaviour
 {
     public Transform InventoryPanel;
     public Transform MessageBoxPanel;
+    public Transform MessageBoxText;
+    public Transform MessageBoxNameText;
     public Transform MessageBoxOptionsPanel;
     public Transform CharacterTransform;
     public Transform MoneyText;
@@ -113,6 +115,7 @@ public class UserInterfaceController : MonoBehaviour
 
         foreach (char c in message)
         {
+            SoundController.Instance.PlayTalkSound();
             text += c;
             textComponent.SetText(text);
             yield return new WaitForSeconds(0.03f);

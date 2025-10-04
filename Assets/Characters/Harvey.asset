@@ -10,25 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12cf7e2c6d1a13be19c11986b86c256c, type: 3}
-  m_Name: Billy
+  m_Name: Harvey
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  Name: Billy
-  Sprite: {fileID: 6994710871084181383, guid: 1d2caa47431b5cdbf96859ab33ca39c6, type: 3}
-  VoicePitch: 1.2
+  Name: Harvey
+  Sprite: {fileID: 6258634647351499424, guid: 51ee4945755b41162888c8842a0b0cd9, type: 3}
+  VoicePitch: 0.8
   PossibleTrades:
   - Item: {fileID: 11400000, guid: d47aba02cafd5a8bd88e23bc739675d4, type: 2}
     TradeType: 0
-    ReputationIncrease: 1
+    ReputationIncrease: 0
     MinimumRequiredReputation: 0
-    Price: 20
-    IsForced: 0
+    Price: 10
+    IsForced: 1
     Options:
-    - Message: Yes
+    - Message: Sure
       Action: 0
     - Message: No
       Action: 1
-    message: HI, I am hungry. I am looking for {item}. I am willing to pay {price}
-      for it.
-    confirmMessage: Thank you
-    denyMessage: Oh no
+    message: I will take your {item}
+    confirmMessage: ...
+    denyMessage: 
   StartReputation: 0
