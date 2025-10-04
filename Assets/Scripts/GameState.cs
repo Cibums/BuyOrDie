@@ -15,6 +15,7 @@ public class GameState
         {
             money = value;
             UserInterfaceController.Instance.UpdateMoneyDisplay();
+            SoundController.Instance.PlaySoundEffect(SoundEffectType.CashRegister);
         }
     }
     public int CurrentRent = 20;
@@ -25,9 +26,17 @@ public class GameState
         get => currentCustomer;
         set
         {
+            Debug.Log("New customer: " + value.Name);
             currentCustomer = value;
-            CurrentTradeOfferIndex = 0;
+            UserInterfaceController.Instance.UpdateCharacter();
         }
     }
     public int CurrentTradeOfferIndex;
+
+    public GameSettings Settings = new GameSettings();
+}
+
+public class GameSettings
+{
+    public int MasterVolume = 30;
 }

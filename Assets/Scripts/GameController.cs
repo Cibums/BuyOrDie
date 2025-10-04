@@ -75,8 +75,20 @@ public class GameController : MonoBehaviour
         return State.Inventory.Remove(item);
     }
 
-    public void TriggerNextCustomer()
+    public void TriggerNextCustomer(HashSet<int> excludeIds = null)
     {
+        if (excludeIds == null)
+        {
+            excludeIds = new HashSet<int>();
+        }
+
+        if (excludeIds.Count >= AllCharacters.Length)
+        {
+            Debug.Log("No more characters available!");
+            LoseGame("You have no customers left!");
+            return;
+        }
+
         Character randomCharacter = AllCharacters[Random.Range(0, AllCharacters.Length)];
         int characterId = randomCharacter.Id;
 
@@ -93,10 +105,7 @@ public class GameController : MonoBehaviour
         Debug.Log($"Current reputation with {randomCharacter.Name} is {currentReputation}");
 
         var validTrades = randomCharacter.PossibleTrades
-            .Where(t =>
-                t.MinimumRequiredReputation >= currentReputation &&
-                (t.TradeType != TradeType.Buy || (!InventoryFull && !State.Inventory.Contains(t.Item)))
-            )
+            .Where(t => ValidTrade(t, currentReputation))
             .ToArray();
 
         Debug.Log($"Found {validTrades.Length} valid trades for {randomCharacter.Name}");
@@ -114,16 +123,36 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            throw new System.IndexOutOfRangeException("No valid trades available for this character.");   
+            excludeIds.Add(characterId);
+            
+            foreach (int id in excludeIds)
+            {
+                Debug.Log("Excluding character with name: " + AllCharacters[id].Name);
+            }
+
+            TriggerNextCustomer(excludeIds); 
         }
+    }
+
+    private bool ValidTrade(Trade t, int currentReputation)
+    {
+        Debug.Log("Reputation needed: " + t.MinimumRequiredReputation + ", current: " + currentReputation);
+
+        bool tradeable = t.MinimumRequiredReputation <= currentReputation;
+        bool buyable = t.TradeType == TradeType.Sell && !InventoryFull && !State.Inventory.Contains(t.Item);
+        bool sellable = t.TradeType == TradeType.Buy && State.Inventory.Contains(t.Item);
+
+        Debug.Log($"Trade {t.Item.Name} tradeable: {tradeable}, buyable: {buyable}, sellable: {sellable}, hasItem: {State.Inventory.Contains(t.Item)}, inventoryFull: {InventoryFull}, inventoryCount: {State.Inventory.Count}, tradeType: {t.TradeType}");
+
+        return tradeable && (buyable || sellable);
     }
 
     public void ConfirmCurrentTradeOffer()
     {
         Trade currentTrade = State.CurrentCustomer.PossibleTrades[State.CurrentTradeOfferIndex];
         State.CharacterRepuations[State.CurrentCustomer.Id] += currentTrade.ReputationIncrease;
-        
-        if(currentTrade.TradeType == TradeType.Sell)
+
+        if (currentTrade.TradeType == TradeType.Sell)
         {
             AddItem(currentTrade.Item);
             UserInterfaceController.Instance.UpdateInventory();

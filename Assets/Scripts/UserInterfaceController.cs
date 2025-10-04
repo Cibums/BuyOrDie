@@ -47,6 +47,7 @@ public class UserInterfaceController : MonoBehaviour
 
     public IEnumerator CharacterWalkIn()
     {
+        SoundController.Instance.PlaySoundEffect(SoundEffectType.NewCustomer);
         characterIsWalking = true;
         CharacterTransform.gameObject.GetComponent<Animator>().SetTrigger("In");
         yield return new WaitUntil(() => CharacterTransform.localPosition.x <= 0.35f);
@@ -89,6 +90,7 @@ public class UserInterfaceController : MonoBehaviour
                     optionUI.GetComponentInChildren<TMPro.TMP_Text>().SetText(option.Message);
                     ChoiceButtonBehaviour choiceButton = optionUI.GetComponent<ChoiceButtonBehaviour>();
                     choiceButton.Action = option.Action;
+                    choiceButton.IsForced = trade.IsForced;
                     choiceButton.CheckEligibility();
                 }
 
@@ -124,6 +126,7 @@ public class UserInterfaceController : MonoBehaviour
 
     internal void UpdateCharacter()
     {
-        CharacterTransform.GetComponentInChildren<SpriteRenderer>().sprite = GameController.Instance.State.CurrentCustomer.Sprite;
+        Debug.Log("Updating character sprite");
+        CharacterTransform.GetComponent<SpriteRenderer>().sprite = GameController.Instance.State.CurrentCustomer.Sprite;
     }
 }
