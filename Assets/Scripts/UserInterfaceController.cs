@@ -7,6 +7,8 @@ public class UserInterfaceController : MonoBehaviour
 {
     public Transform InventoryPanel;
     public Transform MessageBoxPanel;
+    public Transform MessageBoxText;
+    public Transform MessageBoxNameText;
     public Transform MessageBoxOptionsPanel;
     public Transform CharacterTransform;
     public Transform MoneyText;
@@ -47,6 +49,7 @@ public class UserInterfaceController : MonoBehaviour
 
     public IEnumerator CharacterWalkIn()
     {
+        SoundController.Instance.PlaySoundEffect(SoundEffectType.NewCustomer);
         characterIsWalking = true;
         CharacterTransform.gameObject.GetComponent<Animator>().SetTrigger("In");
         yield return new WaitUntil(() => CharacterTransform.localPosition.x <= 0.35f);
@@ -89,6 +92,7 @@ public class UserInterfaceController : MonoBehaviour
                     optionUI.GetComponentInChildren<TMPro.TMP_Text>().SetText(option.Message);
                     ChoiceButtonBehaviour choiceButton = optionUI.GetComponent<ChoiceButtonBehaviour>();
                     choiceButton.Action = option.Action;
+                    choiceButton.IsForced = trade.IsForced;
                     choiceButton.CheckEligibility();
                 }
 
@@ -111,6 +115,7 @@ public class UserInterfaceController : MonoBehaviour
 
         foreach (char c in message)
         {
+            SoundController.Instance.PlayTalkSound();
             text += c;
             textComponent.SetText(text);
             yield return new WaitForSeconds(0.03f);
@@ -124,6 +129,7 @@ public class UserInterfaceController : MonoBehaviour
 
     internal void UpdateCharacter()
     {
-        CharacterTransform.GetComponentInChildren<SpriteRenderer>().sprite = GameController.Instance.State.CurrentCustomer.Sprite;
+        Debug.Log("Updating character sprite");
+        CharacterTransform.GetComponent<SpriteRenderer>().sprite = GameController.Instance.State.CurrentCustomer.Sprite;
     }
 }

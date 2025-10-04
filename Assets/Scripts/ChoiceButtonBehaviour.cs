@@ -3,6 +3,7 @@ using UnityEngine;
 public class ChoiceButtonBehaviour : MonoBehaviour
 {
     public TradeAction Action;
+    public bool IsForced = false;
 
     public void OnClick()
     {
@@ -36,6 +37,16 @@ public class ChoiceButtonBehaviour : MonoBehaviour
                 {
                     GetComponent<UnityEngine.UI.Button>().interactable = true;
                 }
+            }
+            else if (!IsForced)
+            {
+                GetComponent<UnityEngine.UI.Button>().interactable = true;
+            }
+            else
+            {
+                var textComponent = GetComponentInChildren<TMPro.TMP_Text>();
+                string text = textComponent.text;
+                textComponent.SetText(text + " - forced");
             }
 
         }

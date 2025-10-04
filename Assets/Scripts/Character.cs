@@ -6,14 +6,8 @@ public class Character : ScriptableObject
 {
     public string Name;
     public Sprite Sprite;
-    public VoiceType VoiceType;
+    public float VoicePitch = 1f;
     public Trade[] PossibleTrades;
     public int StartReputation;
     public int Id => GameController.Instance.AllCharacters.ToList().IndexOf(this);
-}
-
-public enum VoiceType {
-    Male,
-    Female,
-    Alien
 }
