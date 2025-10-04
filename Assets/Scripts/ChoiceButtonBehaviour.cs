@@ -30,13 +30,14 @@ public class ChoiceButtonBehaviour : MonoBehaviour
                     GetComponent<UnityEngine.UI.Button>().interactable = canAfford;
                     var textComponent = GetComponentInChildren<TMPro.TMP_Text>();
                     string text = textComponent.text;
-                    textComponent.SetText(text + " (can't afford)");
+                    textComponent.SetText(text + " - low funds");
+                }
+                else
+                {
+                    GetComponent<UnityEngine.UI.Button>().interactable = true;
                 }
             }
-            else
-            {
-                GetComponent<UnityEngine.UI.Button>().interactable = true;
-            }
+
         }
         else
         {
