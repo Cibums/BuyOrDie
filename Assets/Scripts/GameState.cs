@@ -7,7 +7,27 @@ public class GameState
 {
     public Dictionary<int, float> CharacterRepuations = new Dictionary<int, float>();
     public List<Item> Inventory;
-    public int Money;
-    public Character CurrentCustomer;
+    private int money = 100;
+    public int Money
+    {
+        get => money;
+        set
+        {
+            money = value;
+            UserInterfaceController.Instance.UpdateMoneyDisplay();
+        }
+    }
+    public int CurrentRent = 20;
+    public int TimeUntilRent = 120;
+    private Character currentCustomer;
+    public Character CurrentCustomer
+    {
+        get => currentCustomer;
+        set
+        {
+            currentCustomer = value;
+            CurrentTradeOfferIndex = 0;
+        }
+    }
     public int CurrentTradeOfferIndex;
 }

@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     public Character[] AllCharacters;
     public GameState State;
+    public int RentTimer = 120;
 
     public GameObject TooltipUIPrefab;
 
@@ -21,9 +22,43 @@ public class GameController : MonoBehaviour
         }
     }
 
+    float timer = 0f;
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+
+        if (timer >= 1f)
+        {
+            if (State.TimeUntilRent > 0)
+            {
+                State.TimeUntilRent--;
+                UserInterfaceController.Instance.UpdateRentTimerText();
+            }
+            else
+            {
+                State.Money -= State.CurrentRent;
+
+                if (State.Money < 0)
+                {
+                    LoseGame("You couldn't pay the rent!");
+                }
+
+                State.TimeUntilRent = RentTimer;
+            }
+            timer = 0f;
+        }
+    }
+
+    private void LoseGame(string reason)
+    {
+        Debug.Log("You lose! " + reason);
+    }
+
     private void Start()
     {
         TriggerNextCustomer();
+        UserInterfaceController.Instance.UpdateMoneyDisplay();
     }
 
     public void AddItem(Item item)

@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UserInterfaceController : MonoBehaviour
@@ -7,6 +9,8 @@ public class UserInterfaceController : MonoBehaviour
     public Transform MessageBoxPanel;
     public Transform MessageBoxOptionsPanel;
     public Transform CharacterTransform;
+    public Transform MoneyText;
+    public Transform RentTimerText;
     public bool characterIsWalking;
     public GameObject MessageBoxOptionPrefab;
     public GameObject InventoryItemPrefab;
@@ -19,6 +23,12 @@ public class UserInterfaceController : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    public void UpdateMoneyDisplay()
+    {
+        var moneyText = MoneyText.GetComponent<TMPro.TMP_Text>();
+        moneyText.SetText(GameController.Instance.State.Money.ToString() + ":-");
     }
 
     public void UpdateInventory()
@@ -105,5 +115,15 @@ public class UserInterfaceController : MonoBehaviour
             textComponent.SetText(text);
             yield return new WaitForSeconds(0.03f);
         }
+    }
+
+    internal void UpdateRentTimerText()
+    {
+        RentTimerText.GetComponent<TMPro.TMP_Text>().SetText($"${GameController.Instance.State.CurrentRent} rent in: {GameController.Instance.State.TimeUntilRent}s");
+    }
+
+    internal void UpdateCharacter()
+    {
+        CharacterTransform.GetComponentInChildren<SpriteRenderer>().sprite = GameController.Instance.State.CurrentCustomer.Sprite;
     }
 }
