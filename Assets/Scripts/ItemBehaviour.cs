@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemBehaviour : TooltipBehaviour
 {
@@ -26,6 +27,6 @@ public class ItemBehaviour : TooltipBehaviour
 
     public void UpdateItem()
     {
-        
+        GetComponent<Image>().sprite = Item.Sprite;
     }
 }

@@ -6,6 +6,8 @@ public class UserInterfaceController : MonoBehaviour
     public Transform InventoryPanel;
     public Transform MessageBoxPanel;
     public Transform MessageBoxOptionsPanel;
+    public Transform CharacterTransform;
+    public bool characterIsWalking;
     public GameObject MessageBoxOptionPrefab;
     public GameObject InventoryItemPrefab;
 
@@ -33,16 +35,39 @@ public class UserInterfaceController : MonoBehaviour
         }
     }
 
+    public IEnumerator CharacterWalkIn()
+    {
+        characterIsWalking = true;
+        CharacterTransform.gameObject.GetComponent<Animator>().SetTrigger("In");
+        yield return new WaitUntil(() => CharacterTransform.localPosition.x <= 0.35f);
+        characterIsWalking = false;
+    }
+
+    public IEnumerator CharacterWalkOut()
+    {
+        MessageBoxPanel.gameObject.SetActive(false);
+        characterIsWalking = true;
+        CharacterTransform.gameObject.GetComponent<Animator>().SetTrigger("Out");
+        yield return new WaitUntil(() => CharacterTransform.localPosition.x >= 2.95f);
+        characterIsWalking = false;
+    }
+
     public IEnumerator ShowTradeMessage(Trade trade, TradeAction action = TradeAction.None)
     {
+        yield return new WaitUntil(() => !characterIsWalking);
+
         switch (action)
         {
             case TradeAction.Confirm:
                 yield return ShowMessage(trade.ConfirmMessage);
+                yield return new WaitForSeconds(1f);
+                yield return StartCoroutine(CharacterWalkOut());
                 GameController.Instance.TriggerNextCustomer();
                 break;
             case TradeAction.Deny:
                 yield return ShowMessage(trade.DenyMessage);
+                yield return new WaitForSeconds(1f);
+                yield return StartCoroutine(CharacterWalkOut());
                 GameController.Instance.TriggerNextCustomer();
                 break;
             default:
@@ -52,7 +77,9 @@ public class UserInterfaceController : MonoBehaviour
                 {
                     var optionUI = Instantiate(MessageBoxOptionPrefab, MessageBoxOptionsPanel);
                     optionUI.GetComponentInChildren<TMPro.TMP_Text>().SetText(option.Message);
-                    optionUI.GetComponent<ChoiceButtonBehaviour>().Action = option.Action;
+                    ChoiceButtonBehaviour choiceButton = optionUI.GetComponent<ChoiceButtonBehaviour>();
+                    choiceButton.Action = option.Action;
+                    choiceButton.CheckEligibility();
                 }
 
                 break;
@@ -76,7 +103,7 @@ public class UserInterfaceController : MonoBehaviour
         {
             text += c;
             textComponent.SetText(text);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.03f);
         }
     }
 }
