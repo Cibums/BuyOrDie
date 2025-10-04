@@ -33,24 +33,50 @@ public class UserInterfaceController : MonoBehaviour
         }
     }
 
-    public IEnumerator ShowMessage(Trade trade)
+    public IEnumerator ShowTradeMessage(Trade trade, TradeAction action = TradeAction.None)
     {
-        MessageBoxPanel.gameObject.SetActive(true);
+        switch (action)
+        {
+            case TradeAction.Confirm:
+                yield return ShowMessage(trade.ConfirmMessage);
+                GameController.Instance.TriggerNextCustomer();
+                break;
+            case TradeAction.Deny:
+                yield return ShowMessage(trade.DenyMessage);
+                GameController.Instance.TriggerNextCustomer();
+                break;
+            default:
+                yield return ShowMessage(trade.Message);
+
+                foreach (TradeOption option in trade.Options)
+                {
+                    var optionUI = Instantiate(MessageBoxOptionPrefab, MessageBoxOptionsPanel);
+                    optionUI.GetComponentInChildren<TMPro.TMP_Text>().SetText(option.Message);
+                    optionUI.GetComponent<ChoiceButtonBehaviour>().Action = option.Action;
+                }
+
+                break;
+        }
+    }
+
+    public IEnumerator ShowMessage(string message)
+    {
+        foreach (Transform child in MessageBoxOptionsPanel)
+        {
+            Destroy(child.gameObject);
+        }
 
         var textComponent = MessageBoxPanel.GetComponentInChildren<TMPro.TMP_Text>();
         string text = "";
 
-        foreach (char c in trade.Message)
+        MessageBoxPanel.gameObject.SetActive(true);
+        textComponent.SetText("");
+
+        foreach (char c in message)
         {
             text += c;
             textComponent.SetText(text);
             yield return new WaitForSeconds(0.1f);
-        }
-
-        foreach (TradeOption option in trade.Options)
-        {
-            var optionUI = Instantiate(MessageBoxOptionPrefab, MessageBoxOptionsPanel);
-            optionUI.GetComponentInChildren<TMPro.TMP_Text>().SetText(option.Message);
         }
     }
 }
