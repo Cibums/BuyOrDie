@@ -334,7 +334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -340}
+  m_AnchoredPosition: {x: -471.6, y: 200}
   m_SizeDelta: {x: 858.5, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &379378563
@@ -481,7 +481,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &399933366
 RectTransform:
@@ -521,7 +521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &402060336
 RectTransform:
   m_ObjectHideFlags: 0
@@ -540,7 +540,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 409, y: 149}
+  m_AnchoredPosition: {x: 550, y: 149}
   m_SizeDelta: {x: 718.26294, y: 344.83398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &402060337
@@ -875,7 +875,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8b5e814e08c6fd50484d74c888332190, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -941,7 +941,7 @@ MonoBehaviour:
   m_margin: {x: 30, y: 30, z: 30, w: 30}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &968243380
@@ -1323,6 +1323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1723560190}
   - component: {fileID: 1723560189}
+  - component: {fileID: 1723560191}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1377,7 +1378,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e65b220b5763d1be8852c2e9d7b97199, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1397,12 +1398,34 @@ Transform:
   m_GameObject: {fileID: 1723560188}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.39, z: 0}
-  m_LocalScale: {x: 0.7, y: 1.2, z: 1}
+  m_LocalPosition: {x: 3, y: -0.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1723560191
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723560188}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e1d3e274d44e956368ad8d6277799270, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2010216716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1526,9 +1549,10 @@ MonoBehaviour:
   AllCharacters:
   - {fileID: 11400000, guid: 64d626981316e9fecb97e5af3bdce858, type: 2}
   State:
-    Inventory:
-    - {fileID: 11400000, guid: d47aba02cafd5a8bd88e23bc739675d4, type: 2}
+    Inventory: []
     Money: 0
+    CurrentCustomer: {fileID: 0}
+    CurrentTradeOfferIndex: 0
   TooltipUIPrefab: {fileID: 1852995017054453968, guid: c40aeb9cb2502ebf4be46c8bc9d72828, type: 3}
 --- !u!4 &2098762271
 Transform:
@@ -1560,6 +1584,8 @@ MonoBehaviour:
   InventoryPanel: {fileID: 379378562}
   MessageBoxPanel: {fileID: 402060336}
   MessageBoxOptionsPanel: {fileID: 1057401468}
+  CharacterTransform: {fileID: 1723560190}
+  characterIsWalking: 0
   MessageBoxOptionPrefab: {fileID: 3532473105522876456, guid: bcc296871d84e9a14a29f9be4de06c08, type: 3}
   InventoryItemPrefab: {fileID: 6524665235528318122, guid: d8de8201d874de82ea17e63b10dfab63, type: 3}
 --- !u!1660057539 &9223372036854775807

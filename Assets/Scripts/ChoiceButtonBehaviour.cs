@@ -15,4 +15,32 @@ public class ChoiceButtonBehaviour : MonoBehaviour
             GameController.Instance.DenyCurrentTradeOffer();
         }
     }
+
+    public void CheckEligibility()
+    {
+        Trade currentTrade = GameController.Instance.State.CurrentCustomer?.PossibleTrades[GameController.Instance.State.CurrentTradeOfferIndex];
+        if (currentTrade != null)
+        {
+            if (Action == TradeAction.Confirm)
+            {
+                bool canAfford = currentTrade.TradeType == TradeType.Sell ? GameController.Instance.State.Money >= currentTrade.Price : true;
+
+                if (!canAfford)
+                {
+                    GetComponent<UnityEngine.UI.Button>().interactable = canAfford;
+                    var textComponent = GetComponentInChildren<TMPro.TMP_Text>();
+                    string text = textComponent.text;
+                    textComponent.SetText(text + " (can't afford)");
+                }
+            }
+            else
+            {
+                GetComponent<UnityEngine.UI.Button>().interactable = true;
+            }
+        }
+        else
+        {
+            GetComponent<UnityEngine.UI.Button>().interactable = false;
+        }
+    }
 }

@@ -74,11 +74,13 @@ public class GameController : MonoBehaviour
             State.CurrentCustomer = randomCharacter;
             State.CurrentTradeOfferIndex = randomTradeIndex;
 
+            StartCoroutine(UserInterfaceController.Instance.CharacterWalkIn());
             StartCoroutine(UserInterfaceController.Instance.ShowTradeMessage(randomTrade));
-            return;
         }
-        
-        throw new System.IndexOutOfRangeException("No valid trades available for this character.");
+        else
+        {
+            throw new System.IndexOutOfRangeException("No valid trades available for this character.");   
+        }
     }
 
     public void ConfirmCurrentTradeOffer()
@@ -86,18 +88,18 @@ public class GameController : MonoBehaviour
         Trade currentTrade = State.CurrentCustomer.PossibleTrades[State.CurrentTradeOfferIndex];
         State.CharacterRepuations[State.CurrentCustomer.Id] += currentTrade.ReputationIncrease;
         
-        if(currentTrade.TradeType == TradeType.Buy)
+        if(currentTrade.TradeType == TradeType.Sell)
         {
             AddItem(currentTrade.Item);
             UserInterfaceController.Instance.UpdateInventory();
         }
-        else if (currentTrade.TradeType == TradeType.Sell)
+        else if (currentTrade.TradeType == TradeType.Buy)
         {
             RemoveItem(currentTrade.Item);
             UserInterfaceController.Instance.UpdateInventory();
         }
 
-        State.Money += currentTrade.TradeType == TradeType.Sell ? currentTrade.Price : -currentTrade.Price;
+        State.Money += currentTrade.TradeType == TradeType.Buy ? currentTrade.Price : -currentTrade.Price;
 
         StartCoroutine(UserInterfaceController.Instance.ShowTradeMessage(currentTrade, TradeAction.Confirm));
     }
