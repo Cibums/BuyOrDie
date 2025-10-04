@@ -107,7 +107,9 @@ public class UserInterfaceController : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        var textComponent = MessageBoxPanel.GetComponentInChildren<TMPro.TMP_Text>();
+        MessageBoxNameText.GetComponent<TMPro.TMP_Text>().SetText(GameController.Instance.State.CurrentCustomer.Name);
+
+        var textComponent = MessageBoxText.GetComponent<TMPro.TMP_Text>();
         string text = "";
 
         MessageBoxPanel.gameObject.SetActive(true);
