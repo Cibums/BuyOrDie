@@ -12,6 +12,7 @@ public class Trade
     public int Price = 0;
     public bool IsForced = false;
     public bool IsExtinguishable = false;
+    public bool AvailableAlways = false;
     public TradeOption[] Options;
 
     [SerializeField, TextArea]
@@ -65,7 +66,16 @@ public class Trade
             return string.Empty;
 
         string processed = message;
-        processed = processed.Replace("{item}", Item.Name);
+
+        if (Item != null)
+        {
+            processed = processed.Replace("{item}", Item.Name);
+        }
+        else
+        {
+            processed = processed.Replace("{item}", "something");  
+        }
+
         processed = processed.Replace("{price}", Price.ToString());
         processed = processed.Replace("{type}", TradeType.ToString());
 

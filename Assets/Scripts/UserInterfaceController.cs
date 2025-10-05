@@ -72,7 +72,7 @@ public class UserInterfaceController : MonoBehaviour
         CharacterTransform.gameObject.GetComponent<Animator>().SetTrigger("In");
         yield return new WaitForSeconds(0.5f);
         Debug.Log($"CharacterWalkIn: localPosition.x = {CharacterTransform.localPosition.x}");
-        yield return new WaitUntil(() => CharacterTransform.localPosition.x <= 0.2f);
+        yield return new WaitUntil(() => CharacterTransform.localPosition.x <= 0.25f);
         characterIsWalking = false;
     }
 

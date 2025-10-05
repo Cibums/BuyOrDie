@@ -25,6 +25,7 @@ public class ChoiceButtonBehaviour : MonoBehaviour
             if (Action == TradeAction.Confirm)
             {
                 bool canAfford = currentTrade.TradeType == TradeType.Sell ? GameController.Instance.State.Money >= currentTrade.Price : true;
+                bool hasItem = GameController.Instance.State.Inventory.Contains(currentTrade.Item);
 
                 if (!canAfford)
                 {
@@ -32,6 +33,13 @@ public class ChoiceButtonBehaviour : MonoBehaviour
                     var textComponent = GetComponentInChildren<TMPro.TMP_Text>();
                     string text = textComponent.text;
                     textComponent.SetText(text + " - low funds");
+                }
+                else if (!hasItem && currentTrade.TradeType == TradeType.Buy && currentTrade.Item != null)
+                {
+                    GetComponent<UnityEngine.UI.Button>().interactable = hasItem;
+                    var textComponent = GetComponentInChildren<TMPro.TMP_Text>();
+                    string text = textComponent.text;
+                    textComponent.SetText(text + " - no item");
                 }
                 else
                 {

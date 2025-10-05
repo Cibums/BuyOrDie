@@ -51,7 +51,7 @@ MonoBehaviour:
   - Item: {fileID: 0}
     TradeType: 0
     ReputationIncrease: 1
-    MinimumRequiredReputation: 1
+    MinimumRequiredReputation: -1000
     MaximumRequiredReputation: 3
     Price: 20
     IsForced: 1
@@ -68,7 +68,7 @@ MonoBehaviour:
     TradeType: 0
     ReputationIncrease: 1
     MinimumRequiredReputation: 1
-    MaximumRequiredReputation: 3
+    MaximumRequiredReputation: 1000
     Price: 5
     IsForced: 1
     IsExtinguishable: 0
@@ -84,8 +84,8 @@ MonoBehaviour:
   - Item: {fileID: 11400000, guid: 606c634c076763141b4bf5c72645e96c, type: 2}
     TradeType: 0
     ReputationIncrease: 1
-    MinimumRequiredReputation: 1
-    MaximumRequiredReputation: 3
+    MinimumRequiredReputation: 2
+    MaximumRequiredReputation: 1000
     Price: 5
     IsForced: 1
     IsExtinguishable: 0

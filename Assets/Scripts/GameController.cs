@@ -162,7 +162,6 @@ public class GameController : MonoBehaviour
             SaveNow();
 
             StartCoroutine(UserInterfaceController.Instance.CharacterWalkIn());
-            Debug.Log("Offering trade: " + randomTrade.Item.Name + " (" + randomTrade.TradeType + ") for " + randomTrade.Price);
             StartCoroutine(UserInterfaceController.Instance.ShowTradeMessage(randomTrade));
         }
         else
@@ -184,12 +183,12 @@ public class GameController : MonoBehaviour
         Debug.Log("Reputation needed: " + t.MinimumRequiredReputation + ", current: " + currentReputation);
 
         bool tradeable = t.MinimumRequiredReputation <= currentReputation && currentReputation <= t.MaximumRequiredReputation;
-        bool buyable = t.TradeType == TradeType.Sell && !InventoryFull && !State.Inventory.Contains(t.Item);
-        bool sellable = t.TradeType == TradeType.Buy && State.Inventory.Contains(t.Item);
+        bool buyable = t.TradeType == TradeType.Sell && ((!InventoryFull && !State.Inventory.Contains(t.Item)) || t.Item == null);
+        bool sellable = t.TradeType == TradeType.Buy && (State.Inventory.Contains(t.Item) || t.Item == null);
 
-        Debug.Log($"Trade {t.Item.Name} tradeable: {tradeable}, buyable: {buyable}, sellable: {sellable}, hasItem: {State.Inventory.Contains(t.Item)}, inventoryFull: {InventoryFull}, inventoryCount: {State.Inventory.Count}, tradeType: {t.TradeType}");
+        //Debug.Log($"Trade {t.Item.Name} tradeable: {tradeable}, buyable: {buyable}, sellable: {sellable}, hasItem: {State.Inventory.Contains(t.Item)}, inventoryFull: {InventoryFull}, inventoryCount: {State.Inventory.Count}, tradeType: {t.TradeType}");
 
-        return tradeable && (buyable || sellable);
+        return tradeable && (buyable || sellable || t.AvailableAlways);
     }
 
     public void Extinguish()
@@ -207,10 +206,6 @@ public class GameController : MonoBehaviour
 
         Trade currentTrade = State.CurrentCustomer.PossibleTrades[State.CurrentTradeOfferIndex];
         State.CharacterRepuations[State.CurrentCustomer.Id] += currentTrade.ReputationIncrease;
-
-        Debug.Log("Current customer: " + State.CurrentCustomer.Name + " (ID: " + State.CurrentCustomer.Id + ")");
-        Debug.Log("Current trade: " + currentTrade.Item.Name + " (Type: " + currentTrade.TradeType + ", Price: " + currentTrade.Price + ")");
-        Debug.Log("Confirming trade: " + currentTrade.Item.Name + " (" + currentTrade.TradeType + ") for " + currentTrade.Price);
 
         if (currentTrade.TradeType == TradeType.Sell)
         {
