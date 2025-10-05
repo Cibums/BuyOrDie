@@ -100,5 +100,6 @@ public enum SoundEffectType
     GameOver,
     Type,
     Gunshot,
-    Splash
+    Splash,
+    Explosion
 }

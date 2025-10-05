@@ -2540,18 +2540,20 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 6379ea243815a5c1a8902b4df074122f, type: 3}
   - Effect: 7
     Clips:
-    - {fileID: 8300000, guid: eb37c662a3d3c1f27a00acc1773f3635, type: 3}
-    - {fileID: 8300000, guid: 50efc49fcc3f2b7efb341172621980cb, type: 3}
-    - {fileID: 8300000, guid: 47cea222e67567254aae7dff955dea70, type: 3}
-    - {fileID: 8300000, guid: 490d2927f843fb296ba6972dd396c03a, type: 3}
-    - {fileID: 8300000, guid: 8bb1ef744844e8c29b3bfb532f17a35f, type: 3}
-    - {fileID: 8300000, guid: 6379ea243815a5c1a8902b4df074122f, type: 3}
+    - {fileID: 8300000, guid: ad3a0e49c604aa23a832b3107858dee7, type: 3}
+    - {fileID: 8300000, guid: 3f7028fef439b4f8f90d2b75356a1654, type: 3}
+    - {fileID: 8300000, guid: 39c832ab371a12960a2b6d8a79acdc0e, type: 3}
+    - {fileID: 8300000, guid: 9058c26468e926228996e3f3a958921b, type: 3}
+    - {fileID: 8300000, guid: b7a5f0392307fa5a6bfb1196b52e9e49, type: 3}
   - Effect: 8
     Clips:
     - {fileID: 8300000, guid: 1e343501d28561baf9e9cb9b333ec9ed, type: 3}
   - Effect: 9
     Clips:
     - {fileID: 8300000, guid: 018cf6b2e879ed302b67c59f77b156a7, type: 3}
+  - Effect: 10
+    Clips:
+    - {fileID: 8300000, guid: 58b0c6381cd04d18da9049627198f24b, type: 3}
   BackgroundMusic: {fileID: 8300000, guid: 48f7261c202344bbf8757fe11596dc99, type: 3}
   BackgroundAmbience: {fileID: 8300000, guid: ac2e5312e69ac480a90d3c1fcb902000, type: 3}
   MusicSource: {fileID: 2098762274}

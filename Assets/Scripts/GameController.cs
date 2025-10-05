@@ -236,6 +236,13 @@ public class GameController : MonoBehaviour
     {
         State.InTrade = false;
 
+        if (State.CurrentCustomer.ExplodeIfDenied)
+        {
+            SoundController.Instance.PlaySoundEffect(SoundEffectType.Explosion);
+            LoseGame("The customer exploded!");
+            return;
+        }
+
         if (force)
         {
             StopAllCoroutines();
