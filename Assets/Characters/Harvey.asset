@@ -18,7 +18,7 @@ MonoBehaviour:
   PossibleTrades:
   - Item: {fileID: 11400000, guid: fc72655afd08910a4a21065a80e781e1, type: 2}
     TradeType: 1
-    ReputationIncrease: 0
+    ReputationIncrease: 1
     MinimumRequiredReputation: -1000
     MaximumRequiredReputation: 1000
     Price: 50
@@ -34,7 +34,7 @@ MonoBehaviour:
     denyMessage: Okay
   - Item: {fileID: 11400000, guid: e3a65ac1172cf37ffafbc5c5acaa5b49, type: 2}
     TradeType: 1
-    ReputationIncrease: 0
+    ReputationIncrease: 2
     MinimumRequiredReputation: -1000
     MaximumRequiredReputation: 1000
     Price: 0
@@ -51,3 +51,4 @@ MonoBehaviour:
       diary or something...
     denyMessage: Really... I really needed to get rid of it.
   StartReputation: 0
+  ExplodeIfDenied: 0

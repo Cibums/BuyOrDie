@@ -50,7 +50,7 @@ MonoBehaviour:
     denyMessage: You should have taken it...
   - Item: {fileID: 11400000, guid: c6ce1c421ebd2d2ebacd9b139ad7330c, type: 2}
     TradeType: 1
-    ReputationIncrease: 1
+    ReputationIncrease: 3
     MinimumRequiredReputation: -1000
     MaximumRequiredReputation: 1000
     Price: 40
@@ -61,7 +61,7 @@ MonoBehaviour:
       Action: 0
     - Message: No
       Action: 1
-    message: Hey, I want to sell you this {item}
+    message: Hey, I want to sell you this {item} for {price}
     confirmMessage: Thank you for buying my {item}
     denyMessage: You should have taken it...
   - Item: {fileID: 11400000, guid: a0cc12dbc5c641701aa1bec38b968a51, type: 2}

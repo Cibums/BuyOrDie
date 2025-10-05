@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12cf7e2c6d1a13be19c11986b86c256c, type: 3}
+  m_Name: FBIAgent
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  Name: FBI Agent
+  Sprite: {fileID: 3867355161086463755, guid: ce543e27d225b9fb39c0d3ccee4622b5, type: 3}
+  VoicePitch: 1.5
+  PossibleTrades:
+  - Item: {fileID: 11400000, guid: e3a65ac1172cf37ffafbc5c5acaa5b49, type: 2}
+    TradeType: 0
+    ReputationIncrease: -10
+    MinimumRequiredReputation: -1000
+    MaximumRequiredReputation: 1000
+    Price: -30
+    IsForced: 0
+    IsExtinguishable: 0
+    Options:
+    - Message: Yes
+      Action: 0
+    - Message: No
+      Action: 1
+    message: Hello, I am looking for a {item} I believe someone might have left here.
+      Do you have it?
+    confirmMessage: I am in a real hurry and that's why I will only fine you 30 for
+      retaining national defense info isntead of arresting you.
+    denyMessage: Okay.. I will keep looking, thank you
+  - Item: {fileID: 11400000, guid: c6ce1c421ebd2d2ebacd9b139ad7330c, type: 2}
+    TradeType: 0
+    ReputationIncrease: 10
+    MinimumRequiredReputation: -1000
+    MaximumRequiredReputation: 1000
+    Price: 50
+    IsForced: 0
+    IsExtinguishable: 0
+    Options:
+    - Message: Yes
+      Action: 0
+    - Message: No
+      Action: 1
+    message: I have heard stories of a certain box. Do you have something like that?
+      If it's the right one, I would pay {price} for it
+    confirmMessage: Boss will be very happy!
+    denyMessage: Okay.. I will keep looking, thank you
+  StartReputation: 2
+  ExplodeIfDenied: 0

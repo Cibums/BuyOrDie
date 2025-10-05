@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bomber
   m_EditorClassIdentifier: Assembly-CSharp::Character
   Name: Bomber
-  Sprite: {fileID: 7561775956933267110, guid: a375d0e4ed301ded5a1c068ce2e13693, type: 3}
+  Sprite: {fileID: 4790813704670616119, guid: 837ce84a134249c6194157bd3c1e680a, type: 3}
   VoicePitch: 1
   PossibleTrades:
   - Item: {fileID: 11400000, guid: e49aa3beacb96f133a1da26fe7573fef, type: 2}
