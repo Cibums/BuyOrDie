@@ -201,7 +201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 239580382}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2098762270}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &239580382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2479,12 +2491,15 @@ MonoBehaviour:
   MessageBoxText: {fileID: 968243378}
   MessageBoxNameText: {fileID: 1148031945}
   MessageBoxOptionsPanel: {fileID: 1057401468}
+  LoseScreenPanel: {fileID: 1391045886}
+  LoseScreenText: {fileID: 1968117668}
+  LoseScreenReasonText: {fileID: 2111924133}
   CharacterTransform: {fileID: 1723560190}
   MoneyText: {fileID: 1378039866}
   RentTimerText: {fileID: 316827828}
-  characterIsWalking: 0
   MessageBoxOptionPrefab: {fileID: 3532473105522876456, guid: bcc296871d84e9a14a29f9be4de06c08, type: 3}
   InventoryItemPrefab: {fileID: 6524665235528318122, guid: d8de8201d874de82ea17e63b10dfab63, type: 3}
+  characterIsWalking: 0
 --- !u!114 &2098762273
 MonoBehaviour:
   m_ObjectHideFlags: 0
