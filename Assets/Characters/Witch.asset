@@ -51,7 +51,7 @@ MonoBehaviour:
   - Item: {fileID: 11400000, guid: c6ce1c421ebd2d2ebacd9b139ad7330c, type: 2}
     TradeType: 1
     ReputationIncrease: 1
-    MinimumRequiredReputation: 2
+    MinimumRequiredReputation: -1000
     MaximumRequiredReputation: 1000
     Price: 40
     IsForced: 0
@@ -81,3 +81,4 @@ MonoBehaviour:
     confirmMessage: Thank you for buying my {item}
     denyMessage: You should have taken it...
   StartReputation: 0
+  ExplodeIfDenied: 0
