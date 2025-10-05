@@ -8,6 +8,7 @@ public class Trade
     public TradeType TradeType;
     public int ReputationIncrease = 0;
     public int MinimumRequiredReputation = 0;
+    public int MaximumRequiredReputation = 100;
     public int Price = 0;
     public bool IsForced = false;
     public TradeOption[] Options;

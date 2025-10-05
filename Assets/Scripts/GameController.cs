@@ -182,7 +182,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Reputation needed: " + t.MinimumRequiredReputation + ", current: " + currentReputation);
 
-        bool tradeable = t.MinimumRequiredReputation <= currentReputation;
+        bool tradeable = t.MinimumRequiredReputation <= currentReputation && currentReputation <= t.MaximumRequiredReputation;
         bool buyable = t.TradeType == TradeType.Sell && !InventoryFull && !State.Inventory.Contains(t.Item);
         bool sellable = t.TradeType == TradeType.Buy && State.Inventory.Contains(t.Item);
 
