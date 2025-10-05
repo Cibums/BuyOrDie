@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Gun
+  m_Name: LovePotion
   m_EditorClassIdentifier: Assembly-CSharp::ActionItem
-  Name: Gun
-  Sprite: {fileID: -6628414004274166170, guid: f4452a6b68df89d938215c3d1c4ba7fd, type: 3}
+  Name: Love Potion
+  Sprite: {fileID: 8801387275333814104, guid: d438edb7d7530f12a88685adcb31e80d, type: 3}
   Trigger: 0
   Reusable: 0
-  SoundEffect: 8
-  Actions: 070000000500000008000000
+  SoundEffect: 9
+  Actions: 04000000
   ActionValue: 10
-  Description: Shoot customer
+  Description: Makes customer like you more

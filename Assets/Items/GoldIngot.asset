@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Gun
+  m_Name: GoldIngot
   m_EditorClassIdentifier: Assembly-CSharp::ActionItem
-  Name: Gun
-  Sprite: {fileID: -6628414004274166170, guid: f4452a6b68df89d938215c3d1c4ba7fd, type: 3}
-  Trigger: 0
+  Name: Gold Ingot
+  Sprite: {fileID: 5045893105949734108, guid: 42f0caf93b634aa09972b271577a8894, type: 3}
+  Trigger: 2
   Reusable: 0
-  SoundEffect: 8
-  Actions: 070000000500000008000000
-  ActionValue: 10
-  Description: Shoot customer
+  SoundEffect: 0
+  Actions: 02000000
+  ActionValue: 1
+  Description: Increases in value over time

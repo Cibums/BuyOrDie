@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Gun
+  m_Name: WaterBucket
   m_EditorClassIdentifier: Assembly-CSharp::ActionItem
-  Name: Gun
-  Sprite: {fileID: -6628414004274166170, guid: f4452a6b68df89d938215c3d1c4ba7fd, type: 3}
+  Name: Water Bucket
+  Sprite: {fileID: -2065984041467941068, guid: f32f7d582c9a0b58cab2f11e12f162d5, type: 3}
   Trigger: 0
   Reusable: 0
-  SoundEffect: 8
-  Actions: 070000000500000008000000
-  ActionValue: 10
-  Description: Shoot customer
+  SoundEffect: 9
+  Actions: 06000000
+  ActionValue: 0
+  Description: Soak customer

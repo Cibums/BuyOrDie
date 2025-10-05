@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Gun
+  m_Name: PandorasBox
   m_EditorClassIdentifier: Assembly-CSharp::ActionItem
-  Name: Gun
-  Sprite: {fileID: -6628414004274166170, guid: f4452a6b68df89d938215c3d1c4ba7fd, type: 3}
+  Name: Pandora's Box
+  Sprite: {fileID: 3832890765427456003, guid: a2feb003b4eb56a31a2a4e00f225d050, type: 3}
   Trigger: 0
   Reusable: 0
-  SoundEffect: 8
-  Actions: 070000000500000008000000
-  ActionValue: 10
-  Description: Shoot customer
+  SoundEffect: 0
+  Actions: 08000000
+  ActionValue: 0
+  Description: Open Box
