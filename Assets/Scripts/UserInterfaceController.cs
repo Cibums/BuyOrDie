@@ -52,7 +52,7 @@ public class UserInterfaceController : MonoBehaviour
         SoundController.Instance.PlaySoundEffect(SoundEffectType.NewCustomer);
         characterIsWalking = true;
         CharacterTransform.gameObject.GetComponent<Animator>().SetTrigger("In");
-        yield return new WaitUntil(() => CharacterTransform.localPosition.x <= 0.35f);
+        yield return new WaitUntil(() => CharacterTransform.localPosition.x <= 0.2f);
         characterIsWalking = false;
     }
 

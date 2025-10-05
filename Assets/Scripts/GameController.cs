@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public Character[] AllCharacters;
-    public GameState State;
+    public Item[] AllItems;
+    public GameState State = new();
     public int RentTimer = 120;
 
     public GameObject TooltipUIPrefab;
@@ -20,6 +21,18 @@ public class GameController : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    public void SaveNow() => SaveSystem.Save(State);
+
+    private void OnApplicationPause(bool paused)
+    {
+        if (paused) SaveNow();
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus) SaveNow();
     }
 
     float timer = 0f;
@@ -57,8 +70,9 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        SaveSystem.TryLoad(State);
+        Debug.Log("Current in trade: " + State.InTrade);
         TriggerNextCustomer();
-        UserInterfaceController.Instance.UpdateMoneyDisplay();
     }
 
     public void AddItem(Item item)
@@ -77,6 +91,18 @@ public class GameController : MonoBehaviour
 
     public void TriggerNextCustomer(HashSet<int> excludeIds = null)
     {
+        Debug.Log("In Trade: " + State.InTrade);
+        
+        if (State.InTrade)
+        {
+            Trade currentTrade = State.CurrentCustomer.PossibleTrades[State.CurrentTradeOfferIndex];
+            StartCoroutine(UserInterfaceController.Instance.CharacterWalkIn());
+            StartCoroutine(UserInterfaceController.Instance.ShowTradeMessage(currentTrade));
+            return;
+        }
+
+        State.InTrade = true;
+
         if (excludeIds == null)
         {
             excludeIds = new HashSet<int>();
@@ -130,6 +156,7 @@ public class GameController : MonoBehaviour
                 Debug.Log("Excluding character with name: " + AllCharacters[id].Name);
             }
 
+            State.InTrade = false;
             TriggerNextCustomer(excludeIds); 
         }
     }
@@ -149,6 +176,8 @@ public class GameController : MonoBehaviour
 
     public void ConfirmCurrentTradeOffer()
     {
+        State.InTrade = false;
+
         Trade currentTrade = State.CurrentCustomer.PossibleTrades[State.CurrentTradeOfferIndex];
         State.CharacterRepuations[State.CurrentCustomer.Id] += currentTrade.ReputationIncrease;
 
@@ -170,6 +199,8 @@ public class GameController : MonoBehaviour
 
     public void DenyCurrentTradeOffer()
     {
+        State.InTrade = false;
+
         Trade currentTrade = State.CurrentCustomer.PossibleTrades[State.CurrentTradeOfferIndex];
         State.CharacterRepuations[State.CurrentCustomer.Id] -= currentTrade.ReputationIncrease;
 
