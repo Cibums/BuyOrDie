@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameState
 {
     public Dictionary<int, float> CharacterRepuations = new Dictionary<int, float>();
-    public List<Item> Inventory;
+    public List<Item> Inventory = new List<Item>();
     private int money = 100;
     public int Money
     {
@@ -34,11 +34,11 @@ public class GameState
             UserInterfaceController.Instance.UpdateCharacter();
         }
     }
-    public int CurrentTradeOfferIndex;
+    public int CurrentTradeOfferIndex = 0;
 
     public GameSettings Settings = new GameSettings();
 
-    private bool suppressSideEffects;
+    private bool suppressSideEffects = false;
 
     public GameStateSaveData ToSaveData()
     {

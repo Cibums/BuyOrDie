@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class GameController : MonoBehaviour
     private readonly int inventorySize = 5;
 
     public static GameController Instance;
+
+    public static bool IsGameOver = false;
 
     private void Awake()
     {
@@ -33,6 +36,15 @@ public class GameController : MonoBehaviour
     private void OnApplicationFocus(bool focus)
     {
         if (!focus) SaveNow();
+    }
+
+    public void RestartGame()
+    {
+        SaveSystem.Clear();
+        State = new GameState();
+        SaveNow();
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     float timer = 0f;
@@ -66,6 +78,9 @@ public class GameController : MonoBehaviour
     private void LoseGame(string reason)
     {
         Debug.Log("You lose! " + reason);
+        IsGameOver = true;
+        SaveSystem.Clear();
+        UserInterfaceController.Instance.ShowLoseScreen(reason);
     }
 
     private void Start()
@@ -144,6 +159,8 @@ public class GameController : MonoBehaviour
             State.CurrentCustomer = randomCharacter;
             State.CurrentTradeOfferIndex = randomTradeIndex;
 
+            SaveNow();
+
             StartCoroutine(UserInterfaceController.Instance.CharacterWalkIn());
             StartCoroutine(UserInterfaceController.Instance.ShowTradeMessage(randomTrade));
         }
@@ -194,6 +211,8 @@ public class GameController : MonoBehaviour
 
         State.Money += currentTrade.TradeType == TradeType.Buy ? currentTrade.Price : -currentTrade.Price;
 
+        SaveNow();
+
         StartCoroutine(UserInterfaceController.Instance.ShowTradeMessage(currentTrade, TradeAction.Confirm));
     }
 
@@ -203,6 +222,8 @@ public class GameController : MonoBehaviour
 
         Trade currentTrade = State.CurrentCustomer.PossibleTrades[State.CurrentTradeOfferIndex];
         State.CharacterRepuations[State.CurrentCustomer.Id] -= currentTrade.ReputationIncrease;
+
+        SaveNow();
 
         StartCoroutine(UserInterfaceController.Instance.ShowTradeMessage(currentTrade, TradeAction.Deny));
     }

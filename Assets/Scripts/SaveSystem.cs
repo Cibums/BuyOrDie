@@ -1,3 +1,4 @@
+using UnityEditor.SpeedTree.Importer;
 using UnityEngine;
 
 public static class SaveSystem
@@ -6,6 +7,8 @@ public static class SaveSystem
 
     public static void Save(GameState state)
     {
+        if (GameController.IsGameOver) return;
+
         var json = JsonUtility.ToJson(state.ToSaveData());
         Debug.Log("Saving game state: " + json);
         PlayerPrefs.SetString(Key, json);

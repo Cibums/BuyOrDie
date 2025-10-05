@@ -52,7 +52,7 @@ public class SoundController : MonoBehaviour
         PlaySoundEffectWithPitch(SoundEffectType.Talk, pitch);
     }
 
-    public void PlaySoundEffectWithPitch(SoundEffectType effectType, float semitones = 1f)
+    public void PlaySoundEffectWithPitch(SoundEffectType effectType, float pitch = 1f)
     {
         SoundEffect soundEffect = Array.Find(SoundEffects, s => s.Effect == effectType);
         if (soundEffect == null || soundEffect.Clips == null) return;
@@ -64,12 +64,10 @@ public class SoundController : MonoBehaviour
         tempGO.transform.position = Camera.main.transform.position;
 
         AudioSource aSource = tempGO.AddComponent<AudioSource>();
-        aSource.outputAudioMixerGroup = sfxMixer.FindMatchingGroups("SFX")[0];
         aSource.clip = clip;
         aSource.volume = GameController.Instance.State.Settings.MasterVolume / 100f;
+        aSource.pitch = pitch;
         aSource.Play();
-
-        sfxMixer.SetFloat("MyExposedParam", semitones);
 
         Destroy(tempGO, clip.length);
     }
@@ -92,5 +90,6 @@ public enum SoundEffectType
     NewCustomer,
     Step,
     Talk,
-    GameOver
+    GameOver,
+    Type
 }

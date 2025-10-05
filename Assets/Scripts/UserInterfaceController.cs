@@ -5,17 +5,33 @@ using UnityEngine;
 
 public class UserInterfaceController : MonoBehaviour
 {
+    [InspectorLabel("Inventory")]
     public Transform InventoryPanel;
+
+    [InspectorLabel("Message Box")]
     public Transform MessageBoxPanel;
     public Transform MessageBoxText;
     public Transform MessageBoxNameText;
     public Transform MessageBoxOptionsPanel;
+
+    [InspectorLabel("Lose Screen")]
+    public Transform LoseScreenPanel;
+    public TMPro.TMP_Text LoseScreenText;
+    public TMPro.TMP_Text LoseScreenReasonText;
+
+    [InspectorLabel("Character")]
     public Transform CharacterTransform;
+
+    [InspectorLabel("Status")]
     public Transform MoneyText;
     public Transform RentTimerText;
-    public bool characterIsWalking;
+
+    [InspectorLabel("Prefabs")]
     public GameObject MessageBoxOptionPrefab;
     public GameObject InventoryItemPrefab;
+
+    [HideInInspector]
+    public bool characterIsWalking;
 
     public static UserInterfaceController Instance;
 
@@ -100,6 +116,13 @@ public class UserInterfaceController : MonoBehaviour
         }
     }
 
+    public void ShowLoseScreen(string reason)
+    {
+        LoseScreenPanel.gameObject.SetActive(true);
+        StartCoroutine(WriteText(LoseScreenText, "You Lose!", () => SoundController.Instance.PlaySoundEffect(SoundEffectType.Type)));
+        StartCoroutine(WriteText(LoseScreenReasonText, reason, () => SoundController.Instance.PlaySoundEffect(SoundEffectType.Type)));
+    }
+
     public IEnumerator ShowMessage(string message)
     {
         foreach (Transform child in MessageBoxOptionsPanel)
@@ -110,14 +133,20 @@ public class UserInterfaceController : MonoBehaviour
         MessageBoxNameText.GetComponent<TMPro.TMP_Text>().SetText(GameController.Instance.State.CurrentCustomer.Name);
 
         var textComponent = MessageBoxText.GetComponent<TMPro.TMP_Text>();
-        string text = "";
 
         MessageBoxPanel.gameObject.SetActive(true);
         textComponent.SetText("");
 
+        yield return WriteText(textComponent, message, () => SoundController.Instance.PlaySoundEffect(SoundEffectType.Talk));
+    }
+
+    IEnumerator WriteText(TMPro.TMP_Text textComponent, string message, Action forEachCharacter = null)
+    {
+        string text = "";
         foreach (char c in message)
         {
-            SoundController.Instance.PlayTalkSound();
+            forEachCharacter?.Invoke();
+
             text += c;
             textComponent.SetText(text);
             yield return new WaitForSeconds(0.03f);
@@ -132,6 +161,6 @@ public class UserInterfaceController : MonoBehaviour
     internal void UpdateCharacter()
     {
         Debug.Log("Updating character sprite");
-        CharacterTransform.GetComponent<SpriteRenderer>().sprite = GameController.Instance.State.CurrentCustomer.Sprite;
+        CharacterTransform.GetComponent<SpriteRenderer>().sprite = GameController.Instance?.State?.CurrentCustomer?.Sprite;
     }
 }
