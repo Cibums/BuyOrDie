@@ -31,5 +31,53 @@ MonoBehaviour:
       Action: 1
     message: Hey, I want to sell you this {item}
     confirmMessage: Thank you for buying my {item}
-    denyMessage: Fuck a you!
+    denyMessage: You should have taken it...
+  - Item: {fileID: 11400000, guid: 92b2d33cb2aa354ba9a7de083d19c37a, type: 2}
+    TradeType: 1
+    ReputationIncrease: 1
+    MinimumRequiredReputation: -1000
+    MaximumRequiredReputation: 1000
+    Price: 20
+    IsForced: 0
+    IsExtinguishable: 0
+    Options:
+    - Message: Yes
+      Action: 0
+    - Message: No
+      Action: 1
+    message: Hey, I want to sell you this {item}
+    confirmMessage: Thank you for buying my {item}
+    denyMessage: You should have taken it...
+  - Item: {fileID: 11400000, guid: c6ce1c421ebd2d2ebacd9b139ad7330c, type: 2}
+    TradeType: 1
+    ReputationIncrease: 1
+    MinimumRequiredReputation: 2
+    MaximumRequiredReputation: 1000
+    Price: 40
+    IsForced: 0
+    IsExtinguishable: 0
+    Options:
+    - Message: Yes
+      Action: 0
+    - Message: No
+      Action: 1
+    message: Hey, I want to sell you this {item}
+    confirmMessage: Thank you for buying my {item}
+    denyMessage: You should have taken it...
+  - Item: {fileID: 11400000, guid: a0cc12dbc5c641701aa1bec38b968a51, type: 2}
+    TradeType: 1
+    ReputationIncrease: 1
+    MinimumRequiredReputation: 3
+    MaximumRequiredReputation: 1000
+    Price: 40
+    IsForced: 0
+    IsExtinguishable: 0
+    Options:
+    - Message: Yes
+      Action: 0
+    - Message: No
+      Action: 1
+    message: Hey, I want to sell you this {item}
+    confirmMessage: Thank you for buying my {item}
+    denyMessage: You should have taken it...
   StartReputation: 0

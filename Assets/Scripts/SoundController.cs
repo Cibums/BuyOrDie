@@ -43,12 +43,12 @@ public class SoundController : MonoBehaviour
     {
         MusicSource.clip = BackgroundMusic;
         MusicSource.loop = true;
-        MusicSource.volume = GameController.Instance.State.Settings.MusicVolume / 100f * (GameController.Instance.State.Settings.MasterVolume / 100f);
+        MusicSource.volume = GameController.Instance.State.Settings.MasterVolume / 1000f;
         MusicSource.Play();
 
         AmbienceSource.clip = BackgroundAmbience;
         AmbienceSource.loop = true;
-        AmbienceSource.volume = GameController.Instance.State.Settings.AmbienceVolume / 100f * (GameController.Instance.State.Settings.MasterVolume / 100f);
+        AmbienceSource.volume = GameController.Instance.State.Settings.MasterVolume / 1000f;
         AmbienceSource.Play();
     }
 
@@ -99,5 +99,7 @@ public enum SoundEffectType
     Talk,
     GameOver,
     Type,
-    Gunshot
+    Gunshot,
+    Splash,
+    Explosion
 }

@@ -32,4 +32,22 @@ MonoBehaviour:
     message: Do you want this {item} for {price}?
     confirmMessage: Here you go
     denyMessage: Okay
+  - Item: {fileID: 11400000, guid: e3a65ac1172cf37ffafbc5c5acaa5b49, type: 2}
+    TradeType: 1
+    ReputationIncrease: 0
+    MinimumRequiredReputation: -1000
+    MaximumRequiredReputation: 1000
+    Price: 0
+    IsForced: 0
+    IsExtinguishable: 0
+    Options:
+    - Message: Sure
+      Action: 0
+    - Message: No
+      Action: 1
+    message: Hey, I want to get rid of this {item}, could you please hold it for
+      me?
+    confirmMessage: Thank a lot! If someone comes looking for it, say it's dyour
+      diary or something...
+    denyMessage: Really... I really needed to get rid of it.
   StartReputation: 0

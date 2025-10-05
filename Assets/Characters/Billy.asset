@@ -33,4 +33,53 @@ MonoBehaviour:
       for it.
     confirmMessage: Thank you
     denyMessage: Oh no
+  - Item: {fileID: 11400000, guid: 92b2d33cb2aa354ba9a7de083d19c37a, type: 2}
+    TradeType: 0
+    ReputationIncrease: 1
+    MinimumRequiredReputation: -1000
+    MaximumRequiredReputation: 1000
+    Price: 20
+    IsForced: 0
+    IsExtinguishable: 0
+    Options:
+    - Message: Yes
+      Action: 0
+    - Message: No
+      Action: 1
+    message: This {item} is exactly what I've been looking for. Can I have it for
+      {price}?
+    confirmMessage: Thank you
+    denyMessage: Oh no
+  - Item: {fileID: 11400000, guid: e49aa3beacb96f133a1da26fe7573fef, type: 2}
+    TradeType: 0
+    ReputationIncrease: 1
+    MinimumRequiredReputation: -1000
+    MaximumRequiredReputation: 1000
+    Price: 20
+    IsForced: 0
+    IsExtinguishable: 0
+    Options:
+    - Message: Yes
+      Action: 0
+    - Message: No
+      Action: 1
+    message: I am thirsty, could I please have your {item} for {price}?
+    confirmMessage: Thank you
+    denyMessage: Oh no
+  - Item: {fileID: 11400000, guid: e3a65ac1172cf37ffafbc5c5acaa5b49, type: 2}
+    TradeType: 0
+    ReputationIncrease: 1
+    MinimumRequiredReputation: -1000
+    MaximumRequiredReputation: 1000
+    Price: 0
+    IsForced: 0
+    IsExtinguishable: 0
+    Options:
+    - Message: Yes
+      Action: 0
+    - Message: No
+      Action: 1
+    message: I noticed the {item} on the shelf, do you mind if I take that for free?
+    confirmMessage: Thank you
+    denyMessage: Okay...
   StartReputation: 0

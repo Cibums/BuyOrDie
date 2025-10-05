@@ -24,8 +24,11 @@ MonoBehaviour:
     Price: 0
     IsForced: 0
     IsExtinguishable: 1
-    Options: []
+    Options:
+    - Message: Let explode
+      Action: 1
     message: I have a bomb!
     confirmMessage: Ooh... good
     denyMessage: 
   StartReputation: 0
+  ExplodeIfDenied: 1

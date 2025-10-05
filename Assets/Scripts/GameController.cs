@@ -157,7 +157,7 @@ public class GameController : MonoBehaviour
             Trade randomTrade = validTrades[randomTradeIndex];
 
             State.CurrentCustomer = randomCharacter;
-            State.CurrentTradeOfferIndex = randomTradeIndex;
+            State.CurrentTradeOfferIndex = randomCharacter.PossibleTrades.ToList().IndexOf(randomTrade);
 
             SaveNow();
 
@@ -208,6 +208,10 @@ public class GameController : MonoBehaviour
         Trade currentTrade = State.CurrentCustomer.PossibleTrades[State.CurrentTradeOfferIndex];
         State.CharacterRepuations[State.CurrentCustomer.Id] += currentTrade.ReputationIncrease;
 
+        Debug.Log("Current customer: " + State.CurrentCustomer.Name + " (ID: " + State.CurrentCustomer.Id + ")");
+        Debug.Log("Current trade: " + currentTrade.Item.Name + " (Type: " + currentTrade.TradeType + ", Price: " + currentTrade.Price + ")");
+        Debug.Log("Confirming trade: " + currentTrade.Item.Name + " (" + currentTrade.TradeType + ") for " + currentTrade.Price);
+
         if (currentTrade.TradeType == TradeType.Sell)
         {
             AddItem(currentTrade.Item);
@@ -219,7 +223,9 @@ public class GameController : MonoBehaviour
             UserInterfaceController.Instance.UpdateInventory();
         }
 
-        State.Money += currentTrade.TradeType == TradeType.Buy ? currentTrade.Price : -currentTrade.Price;
+        if (currentTrade.Price != 0) {
+            State.Money += currentTrade.TradeType == TradeType.Buy ? currentTrade.Price : -currentTrade.Price;   
+        }
 
         SaveNow();
 
@@ -229,6 +235,13 @@ public class GameController : MonoBehaviour
     public void DenyCurrentTradeOffer(bool force = false)
     {
         State.InTrade = false;
+
+        if (State.CurrentCustomer.ExplodeIfDenied)
+        {
+            SoundController.Instance.PlaySoundEffect(SoundEffectType.Explosion);
+            LoseGame("The customer exploded!");
+            return;
+        }
 
         if (force)
         {

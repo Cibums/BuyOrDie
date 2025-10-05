@@ -21,6 +21,4 @@ public class GameStateSaveData
 public class GameSettings
 {
     public int MasterVolume = 30;
-    public float MusicVolume = 70;
-    public float AmbienceVolume = 70;
 }

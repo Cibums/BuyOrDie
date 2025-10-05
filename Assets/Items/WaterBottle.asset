@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: WaterBottle
   m_EditorClassIdentifier: Assembly-CSharp::ActionItem
   Name: Water Bottle
-  Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  Sprite: {fileID: -3629191439132732467, guid: ae3a1b9db6474c32181574e5305bd21d, type: 3}
   Trigger: 0
   Reusable: 0
-  SoundEffect: 0
+  SoundEffect: 9
   Actions: 06000000
   ActionValue: 0
   Description: Throw at customer

@@ -2451,8 +2451,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44ef64d52db8e372eaf2b0e4b80a7634, type: 2}
   AllItems:
   - {fileID: 11400000, guid: d47aba02cafd5a8bd88e23bc739675d4, type: 2}
+  - {fileID: 11400000, guid: 92b2d33cb2aa354ba9a7de083d19c37a, type: 2}
+  - {fileID: 11400000, guid: 606c634c076763141b4bf5c72645e96c, type: 2}
   - {fileID: 11400000, guid: fc72655afd08910a4a21065a80e781e1, type: 2}
+  - {fileID: 11400000, guid: a0cc12dbc5c641701aa1bec38b968a51, type: 2}
+  - {fileID: 11400000, guid: facf457d32202231da494ee10cd7cbea, type: 2}
+  - {fileID: 11400000, guid: c6ce1c421ebd2d2ebacd9b139ad7330c, type: 2}
+  - {fileID: 11400000, guid: e3a65ac1172cf37ffafbc5c5acaa5b49, type: 2}
   - {fileID: 11400000, guid: e49aa3beacb96f133a1da26fe7573fef, type: 2}
+  - {fileID: 11400000, guid: 20de257e1ddbb342898c64808864da69, type: 2}
   State:
     Inventory: []
     CurrentRent: 20
@@ -2461,8 +2468,6 @@ MonoBehaviour:
     CurrentTradeOfferIndex: 0
     Settings:
       MasterVolume: 30
-      MusicVolume: 100
-      AmbienceVolume: 100
   RentTimer: 120
   TooltipUIPrefab: {fileID: 1852995017054453968, guid: c40aeb9cb2502ebf4be46c8bc9d72828, type: 3}
 --- !u!4 &2098762271
@@ -2535,16 +2540,21 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 6379ea243815a5c1a8902b4df074122f, type: 3}
   - Effect: 7
     Clips:
-    - {fileID: 8300000, guid: eb37c662a3d3c1f27a00acc1773f3635, type: 3}
-    - {fileID: 8300000, guid: 50efc49fcc3f2b7efb341172621980cb, type: 3}
-    - {fileID: 8300000, guid: 47cea222e67567254aae7dff955dea70, type: 3}
-    - {fileID: 8300000, guid: 490d2927f843fb296ba6972dd396c03a, type: 3}
-    - {fileID: 8300000, guid: 8bb1ef744844e8c29b3bfb532f17a35f, type: 3}
-    - {fileID: 8300000, guid: 6379ea243815a5c1a8902b4df074122f, type: 3}
+    - {fileID: 8300000, guid: ad3a0e49c604aa23a832b3107858dee7, type: 3}
+    - {fileID: 8300000, guid: 3f7028fef439b4f8f90d2b75356a1654, type: 3}
+    - {fileID: 8300000, guid: 39c832ab371a12960a2b6d8a79acdc0e, type: 3}
+    - {fileID: 8300000, guid: 9058c26468e926228996e3f3a958921b, type: 3}
+    - {fileID: 8300000, guid: b7a5f0392307fa5a6bfb1196b52e9e49, type: 3}
   - Effect: 8
     Clips:
     - {fileID: 8300000, guid: 1e343501d28561baf9e9cb9b333ec9ed, type: 3}
-  BackgroundMusic: {fileID: 0}
+  - Effect: 9
+    Clips:
+    - {fileID: 8300000, guid: 018cf6b2e879ed302b67c59f77b156a7, type: 3}
+  - Effect: 10
+    Clips:
+    - {fileID: 8300000, guid: 58b0c6381cd04d18da9049627198f24b, type: 3}
+  BackgroundMusic: {fileID: 8300000, guid: 48f7261c202344bbf8757fe11596dc99, type: 3}
   BackgroundAmbience: {fileID: 8300000, guid: ac2e5312e69ac480a90d3c1fcb902000, type: 3}
   MusicSource: {fileID: 2098762274}
   AmbienceSource: {fileID: 2098762275}

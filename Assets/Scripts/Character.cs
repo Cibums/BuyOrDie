@@ -9,5 +9,6 @@ public class Character : ScriptableObject
     public float VoicePitch = 1f;
     public Trade[] PossibleTrades;
     public int StartReputation;
+    public bool ExplodeIfDenied = false;
     public int Id => GameController.Instance.AllCharacters.ToList().IndexOf(this);
 }
