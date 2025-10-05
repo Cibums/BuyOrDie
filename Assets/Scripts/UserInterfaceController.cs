@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class UserInterfaceController : MonoBehaviour
 {
@@ -67,7 +68,10 @@ public class UserInterfaceController : MonoBehaviour
     {
         SoundController.Instance.PlaySoundEffect(SoundEffectType.NewCustomer);
         characterIsWalking = true;
+        CharacterTransform.gameObject.SetActive(true);
         CharacterTransform.gameObject.GetComponent<Animator>().SetTrigger("In");
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log($"CharacterWalkIn: localPosition.x = {CharacterTransform.localPosition.x}");
         yield return new WaitUntil(() => CharacterTransform.localPosition.x <= 0.2f);
         characterIsWalking = false;
     }
@@ -137,7 +141,7 @@ public class UserInterfaceController : MonoBehaviour
         MessageBoxPanel.gameObject.SetActive(true);
         textComponent.SetText("");
 
-        yield return WriteText(textComponent, message, () => SoundController.Instance.PlaySoundEffect(SoundEffectType.Talk));
+        yield return WriteText(textComponent, message, () => SoundController.Instance.PlayTalkSound());
     }
 
     IEnumerator WriteText(TMPro.TMP_Text textComponent, string message, Action forEachCharacter = null)

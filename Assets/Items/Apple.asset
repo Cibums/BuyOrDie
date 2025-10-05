@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6021720f0459fbb956fb02fadd51ef, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  Name: Apple
+  Name: Rotten Apple
   Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

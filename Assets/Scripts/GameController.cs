@@ -162,6 +162,7 @@ public class GameController : MonoBehaviour
             SaveNow();
 
             StartCoroutine(UserInterfaceController.Instance.CharacterWalkIn());
+            Debug.Log("Offering trade: " + randomTrade.Item.Name + " (" + randomTrade.TradeType + ") for " + randomTrade.Price);
             StartCoroutine(UserInterfaceController.Instance.ShowTradeMessage(randomTrade));
         }
         else
@@ -191,6 +192,15 @@ public class GameController : MonoBehaviour
         return tradeable && (buyable || sellable);
     }
 
+    public void Extinguish()
+    {
+        Trade currentTrade = State.CurrentCustomer.PossibleTrades[State.CurrentTradeOfferIndex];
+        if (currentTrade.IsExtinguishable)
+        {
+            ConfirmCurrentTradeOffer();
+        }
+    }
+
     public void ConfirmCurrentTradeOffer()
     {
         State.InTrade = false;
@@ -216,9 +226,21 @@ public class GameController : MonoBehaviour
         StartCoroutine(UserInterfaceController.Instance.ShowTradeMessage(currentTrade, TradeAction.Confirm));
     }
 
-    public void DenyCurrentTradeOffer()
+    public void DenyCurrentTradeOffer(bool force = false)
     {
         State.InTrade = false;
+
+        if (force)
+        {
+            StopAllCoroutines();
+            UserInterfaceController.Instance.MessageBoxPanel.gameObject.SetActive(false);
+            UserInterfaceController.Instance.characterIsWalking = false;
+            State.InTrade = false;
+            UserInterfaceController.Instance.CharacterTransform.gameObject.SetActive(false);
+
+            TriggerNextCustomer();
+            return;
+        }
 
         Trade currentTrade = State.CurrentCustomer.PossibleTrades[State.CurrentTradeOfferIndex];
         State.CharacterRepuations[State.CurrentCustomer.Id] -= currentTrade.ReputationIncrease;

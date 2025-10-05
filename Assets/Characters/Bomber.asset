@@ -10,26 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12cf7e2c6d1a13be19c11986b86c256c, type: 3}
-  m_Name: Witch
+  m_Name: Bomber
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  Name: Hagatha
-  Sprite: {fileID: 21300000, guid: e65b220b5763d1be8852c2e9d7b97199, type: 3}
-  VoicePitch: 2
+  Name: Bomber
+  Sprite: {fileID: 7561775956933267110, guid: a375d0e4ed301ded5a1c068ce2e13693, type: 3}
+  VoicePitch: 1
   PossibleTrades:
   - Item: {fileID: 11400000, guid: e49aa3beacb96f133a1da26fe7573fef, type: 2}
-    TradeType: 1
-    ReputationIncrease: 1
+    TradeType: 0
+    ReputationIncrease: 0
     MinimumRequiredReputation: -1000
     MaximumRequiredReputation: 1000
-    Price: 10
+    Price: 0
     IsForced: 0
-    IsExtinguishable: 0
-    Options:
-    - Message: Yes
-      Action: 0
-    - Message: No
-      Action: 1
-    message: Hey, I want to sell you this {item}
-    confirmMessage: Thank you for buying my {item}
-    denyMessage: Fuck a you!
+    IsExtinguishable: 1
+    Options: []
+    message: I have a bomb!
+    confirmMessage: Ooh... good
+    denyMessage: 
   StartReputation: 0

@@ -25,9 +25,9 @@ public class SoundController : MonoBehaviour
 {
     public SoundEffect[] SoundEffects;
     public AudioClip BackgroundMusic;
+    public AudioClip BackgroundAmbience;
     public AudioSource MusicSource;
-
-    [SerializeField] private AudioMixer sfxMixer;
+    public AudioSource AmbienceSource;
 
     public static SoundController Instance;
 
@@ -43,7 +43,13 @@ public class SoundController : MonoBehaviour
     {
         MusicSource.clip = BackgroundMusic;
         MusicSource.loop = true;
+        MusicSource.volume = GameController.Instance.State.Settings.MusicVolume / 100f * (GameController.Instance.State.Settings.MasterVolume / 100f);
         MusicSource.Play();
+
+        AmbienceSource.clip = BackgroundAmbience;
+        AmbienceSource.loop = true;
+        AmbienceSource.volume = GameController.Instance.State.Settings.AmbienceVolume / 100f * (GameController.Instance.State.Settings.MasterVolume / 100f);
+        AmbienceSource.Play();
     }
 
     public void PlayTalkSound()
@@ -85,11 +91,13 @@ public class SoundController : MonoBehaviour
 
 public enum SoundEffectType
 {
+    None,
     CashRegister,
     ItemBought,
     NewCustomer,
     Step,
     Talk,
     GameOver,
-    Type
+    Type,
+    Gunshot
 }

@@ -7,10 +7,11 @@ public class Trade
     public Item Item;
     public TradeType TradeType;
     public int ReputationIncrease = 0;
-    public int MinimumRequiredReputation = 0;
-    public int MaximumRequiredReputation = 100;
+    public int MinimumRequiredReputation = -1000;
+    public int MaximumRequiredReputation = 1000;
     public int Price = 0;
     public bool IsForced = false;
+    public bool IsExtinguishable = false;
     public TradeOption[] Options;
 
     [SerializeField, TextArea]
