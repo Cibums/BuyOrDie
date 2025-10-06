@@ -97,6 +97,10 @@ public class ItemBehaviour : TooltipBehaviour, IPointerClickHandler
                     GameController.Instance.RemoveItem(actionItem);
                     UserInterfaceController.Instance.UpdateInventory();
                     break;
+                case ItemAction.DestroyUniverse:
+                    GameController.Instance.SaveNow();
+                    GlitchController.Instance.StartGlitchAndRedirect("https://itch.io/");
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

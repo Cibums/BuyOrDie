@@ -24,7 +24,7 @@ public class ChoiceButtonBehaviour : MonoBehaviour
         {
             if (Action == TradeAction.Confirm)
             {
-                bool canAfford = currentTrade.TradeType == TradeType.Sell ? GameController.Instance.State.Money >= currentTrade.Price : true;
+                bool canAfford = currentTrade.TradeType == TradeType.Sell ? (GameController.Instance.State.Money >= currentTrade.Price || currentTrade.Price == 0) : true;
                 bool hasItem = GameController.Instance.State.Inventory.Contains(currentTrade.Item);
 
                 if (!canAfford && !IsForced)

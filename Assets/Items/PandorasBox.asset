@@ -17,6 +17,6 @@ MonoBehaviour:
   Trigger: 0
   Reusable: 0
   SoundEffect: 0
-  Actions: 
+  Actions: 0800000009000000
   ActionValue: 0
-  Description: Does nothing
+  Description: Does something

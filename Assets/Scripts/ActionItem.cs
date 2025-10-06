@@ -30,5 +30,6 @@ public enum ItemAction
     DecreaseReputation,
     Extinguish,
     DenyTrade,
-    RemoveThisItem
+    RemoveThisItem,
+    DestroyUniverse
 }

@@ -30,7 +30,7 @@ MonoBehaviour:
       Action: 0
     - Message: No
       Action: 1
-    message: Hey, I want to sell you this {item}
+    message: Hey, I want to sell you this {item} for {price}
     confirmMessage: Thank you for buying my {item}
     denyMessage: You should have taken it...
   - Item: {fileID: 11400000, guid: 92b2d33cb2aa354ba9a7de083d19c37a, type: 2}
@@ -47,7 +47,7 @@ MonoBehaviour:
       Action: 0
     - Message: No
       Action: 1
-    message: Hey, I want to sell you this {item}
+    message: Hey, I want to sell you this {item} for {price}
     confirmMessage: Thank you for buying my {item}
     denyMessage: You should have taken it...
   - Item: {fileID: 11400000, guid: 86bdaf033f53f0c57b0e7a6663939a97, type: 2}
@@ -81,7 +81,7 @@ MonoBehaviour:
       Action: 0
     - Message: No
       Action: 1
-    message: Hey, I want to sell you this {item}
+    message: Hey, I want to sell you this {item} for {price}
     confirmMessage: Thank you for buying my {item}
     denyMessage: You should have taken it...
   StartReputation: 0
