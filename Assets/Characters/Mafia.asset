@@ -51,7 +51,7 @@ MonoBehaviour:
     confirmMessage: Thank you, I will remember this.
     denyMessage: I guess I can't trust you
   - Item: {fileID: 0}
-    TradeType: 0
+    TradeType: 1
     ReputationIncrease: 1
     MinimumRequiredReputation: -1000
     MaximumRequiredReputation: 3

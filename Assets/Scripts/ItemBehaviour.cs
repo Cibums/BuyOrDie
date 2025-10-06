@@ -38,7 +38,24 @@ public class ItemBehaviour : TooltipBehaviour, IPointerClickHandler
     {
         if (Item == null) return;
         var img = GetComponent<Image>();
-        if (img) img.sprite = Item.Sprite;
+        if (img)
+        {
+            img.sprite = Item.Sprite;
+            if (img.sprite != null)
+            {
+                var rectTransform = img.GetComponent<RectTransform>();
+                if (rectTransform != null)
+                {
+                    float spriteWidth = img.sprite.rect.width;
+                    float spriteHeight = img.sprite.rect.height;
+                    float scale = 6f;
+                    if (spriteWidth > 0 && spriteHeight > 0)
+                    {
+                        rectTransform.sizeDelta = new Vector2(spriteWidth * scale, spriteHeight * scale);
+                    }
+                }
+            }
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)

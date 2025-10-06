@@ -92,6 +92,12 @@ public class GameController : MonoBehaviour
 
     public void AddItem(Item item)
     {
+        if (item == null)
+        {
+            Debug.LogWarning("Tried to add null item to inventory");
+            return;
+        }
+
         if (!InventoryFull)
         {
             State.Inventory.Add(item);
