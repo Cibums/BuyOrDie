@@ -27,7 +27,7 @@ public class ChoiceButtonBehaviour : MonoBehaviour
                 bool canAfford = currentTrade.TradeType == TradeType.Sell ? GameController.Instance.State.Money >= currentTrade.Price : true;
                 bool hasItem = GameController.Instance.State.Inventory.Contains(currentTrade.Item);
 
-                if (!canAfford)
+                if (!canAfford && !IsForced)
                 {
                     GetComponent<UnityEngine.UI.Button>().interactable = canAfford;
                     var textComponent = GetComponentInChildren<TMPro.TMP_Text>();

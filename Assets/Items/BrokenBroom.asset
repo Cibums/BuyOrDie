@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BrokenBroom
   m_EditorClassIdentifier: Assembly-CSharp::Item
   Name: Broken Broom
-  Sprite: {fileID: -7924876844232706329, guid: 2f0aef225df136d8cb2618616ffc2884, type: 3}
+  Sprite: {fileID: 21300000, guid: 2f0aef225df136d8cb2618616ffc2884, type: 3}
