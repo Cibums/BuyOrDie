@@ -2425,6 +2425,7 @@ GameObject:
   - component: {fileID: 2098762273}
   - component: {fileID: 2098762274}
   - component: {fileID: 2098762275}
+  - component: {fileID: 2098762276}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2445,23 +2446,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   AllCharacters:
-  - {fileID: 11400000, guid: 64d626981316e9fecb97e5af3bdce858, type: 2}
   - {fileID: 11400000, guid: 138e55dd2a5b5629da4e993427cc110f, type: 2}
-  - {fileID: 11400000, guid: aa1b9972246f2ddc6b4cd3b8302c9b77, type: 2}
   - {fileID: 11400000, guid: 44ef64d52db8e372eaf2b0e4b80a7634, type: 2}
   - {fileID: 11400000, guid: 0bdbb4f4999aeeb57be251e1a358a171, type: 2}
+  - {fileID: 11400000, guid: aa1b9972246f2ddc6b4cd3b8302c9b77, type: 2}
   - {fileID: 11400000, guid: b1cb82ce9db04955899f8af225752477, type: 2}
+  - {fileID: 11400000, guid: 64d626981316e9fecb97e5af3bdce858, type: 2}
   AllItems:
   - {fileID: 11400000, guid: d47aba02cafd5a8bd88e23bc739675d4, type: 2}
   - {fileID: 11400000, guid: 92b2d33cb2aa354ba9a7de083d19c37a, type: 2}
-  - {fileID: 11400000, guid: 606c634c076763141b4bf5c72645e96c, type: 2}
-  - {fileID: 11400000, guid: fc72655afd08910a4a21065a80e781e1, type: 2}
-  - {fileID: 11400000, guid: a0cc12dbc5c641701aa1bec38b968a51, type: 2}
   - {fileID: 11400000, guid: facf457d32202231da494ee10cd7cbea, type: 2}
-  - {fileID: 11400000, guid: c6ce1c421ebd2d2ebacd9b139ad7330c, type: 2}
   - {fileID: 11400000, guid: e3a65ac1172cf37ffafbc5c5acaa5b49, type: 2}
+  - {fileID: 11400000, guid: fc72655afd08910a4a21065a80e781e1, type: 2}
   - {fileID: 11400000, guid: e49aa3beacb96f133a1da26fe7573fef, type: 2}
-  - {fileID: 11400000, guid: 20de257e1ddbb342898c64808864da69, type: 2}
   State:
     Inventory: []
     CurrentRent: 20
@@ -2754,6 +2751,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2098762276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098762269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8316acc21d9d6c97d9da3c25d5ab6a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MissingScriptScanner
 --- !u!1 &2111924131
 GameObject:
   m_ObjectHideFlags: 0

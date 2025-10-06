@@ -24,6 +24,7 @@ MonoBehaviour:
     Price: 20
     IsForced: 0
     IsExtinguishable: 0
+    AvailableAlways: 0
     Options:
     - Message: Yes
       Action: 0
@@ -41,6 +42,7 @@ MonoBehaviour:
     Price: 20
     IsForced: 0
     IsExtinguishable: 0
+    AvailableAlways: 0
     Options:
     - Message: Yes
       Action: 0
@@ -58,6 +60,7 @@ MonoBehaviour:
     Price: 20
     IsForced: 0
     IsExtinguishable: 0
+    AvailableAlways: 0
     Options:
     - Message: Yes
       Action: 0
@@ -74,6 +77,7 @@ MonoBehaviour:
     Price: 0
     IsForced: 0
     IsExtinguishable: 0
+    AvailableAlways: 0
     Options:
     - Message: Yes
       Action: 0
@@ -83,3 +87,4 @@ MonoBehaviour:
     confirmMessage: Thank you
     denyMessage: Okay...
   StartReputation: 0
+  ExplodeIfDenied: 0

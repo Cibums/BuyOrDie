@@ -35,7 +35,7 @@ MonoBehaviour:
     confirmMessage: I am in a real hurry and that's why I will only fine you 30 for
       retaining national defense info isntead of arresting you.
     denyMessage: Okay.. I will keep looking, thank you
-  - Item: {fileID: 11400000, guid: c6ce1c421ebd2d2ebacd9b139ad7330c, type: 2}
+  - Item: {fileID: 11400000, guid: 86bdaf033f53f0c57b0e7a6663939a97, type: 2}
     TradeType: 0
     ReputationIncrease: 10
     MinimumRequiredReputation: -1000

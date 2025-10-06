@@ -24,6 +24,7 @@ MonoBehaviour:
     Price: 50
     IsForced: 0
     IsExtinguishable: 0
+    AvailableAlways: 0
     Options:
     - Message: Sure
       Action: 0
@@ -40,6 +41,7 @@ MonoBehaviour:
     Price: 0
     IsForced: 0
     IsExtinguishable: 0
+    AvailableAlways: 0
     Options:
     - Message: Sure
       Action: 0

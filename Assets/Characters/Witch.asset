@@ -24,6 +24,7 @@ MonoBehaviour:
     Price: 10
     IsForced: 0
     IsExtinguishable: 0
+    AvailableAlways: 0
     Options:
     - Message: Yes
       Action: 0
@@ -40,6 +41,7 @@ MonoBehaviour:
     Price: 20
     IsForced: 0
     IsExtinguishable: 0
+    AvailableAlways: 0
     Options:
     - Message: Yes
       Action: 0
@@ -48,7 +50,7 @@ MonoBehaviour:
     message: Hey, I want to sell you this {item}
     confirmMessage: Thank you for buying my {item}
     denyMessage: You should have taken it...
-  - Item: {fileID: 11400000, guid: c6ce1c421ebd2d2ebacd9b139ad7330c, type: 2}
+  - Item: {fileID: 11400000, guid: 86bdaf033f53f0c57b0e7a6663939a97, type: 2}
     TradeType: 1
     ReputationIncrease: 3
     MinimumRequiredReputation: -1000
@@ -56,6 +58,7 @@ MonoBehaviour:
     Price: 40
     IsForced: 0
     IsExtinguishable: 0
+    AvailableAlways: 0
     Options:
     - Message: Yes
       Action: 0
@@ -72,6 +75,7 @@ MonoBehaviour:
     Price: 40
     IsForced: 0
     IsExtinguishable: 0
+    AvailableAlways: 0
     Options:
     - Message: Yes
       Action: 0

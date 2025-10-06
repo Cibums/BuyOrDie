@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [Serializable]
 public class GameStateSaveData
 {
-    public List<ReputationEntry> CharacterReputations = new(); // replaces Dictionary<int,float>
+    public List<ReputationEntry> CharacterReputations = new();
     public List<int> Inventory = new();
     public int Money = 100;
     public int CurrentRent = 20;

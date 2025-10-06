@@ -22,15 +22,9 @@ public class ItemBehaviour : TooltipBehaviour, IPointerClickHandler
 
     private void SetTooltipText()
     {
-        if (Item != null)
-        {
-            TooltipText = Item.Name;
-        }
-
-        if (Item.GetType() == typeof(ActionItem))
-        {
-            TooltipText += ": " + ItemTriggerDisplayNames[((ActionItem)Item).Trigger] + " - " + ((ActionItem)Item).Description;
-        }
+        TooltipText = Item ? Item.Name : string.Empty;
+        if (Item is ActionItem ai)
+            TooltipText += $": {ItemTriggerDisplayNames[ai.Trigger]} - {ai.Description}";
     }
 
     public void UpdateItem(Item item)
@@ -42,16 +36,15 @@ public class ItemBehaviour : TooltipBehaviour, IPointerClickHandler
 
     public void UpdateItem()
     {
-        GetComponent<Image>().sprite = Item.Sprite;
+        if (Item == null) return;
+        var img = GetComponent<Image>();
+        if (img) img.sprite = Item.Sprite;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (Item.GetType() != typeof(ActionItem)) {
-            return;
-        }
-        
-        ActionItem actionItem = (ActionItem)Item;
+        var actionItem = Item as ActionItem;
+        if (actionItem == null) return;
         Debug.Log("Playing sound effect: " + actionItem.SoundEffect);
         SoundController.Instance.PlaySoundEffect(actionItem.SoundEffect);
 
@@ -66,10 +59,10 @@ public class ItemBehaviour : TooltipBehaviour, IPointerClickHandler
                     GameController.Instance.State.Money -= Mathf.RoundToInt(actionItem.ActionValue);
                     break;
                 case ItemAction.IncreaseReputation:
-                    GameController.Instance.State.CharacterRepuations[GameController.Instance.State.CurrentCustomer.Id] += Mathf.RoundToInt(actionItem.ActionValue);
+                    GameController.Instance.State.CharacterRepuations[GameMapper.CharacterToId(GameController.Instance.State.CurrentCustomer)] += Mathf.RoundToInt(actionItem.ActionValue);
                     break;
                 case ItemAction.DecreaseReputation:
-                    GameController.Instance.State.CharacterRepuations[GameController.Instance.State.CurrentCustomer.Id] -= Mathf.RoundToInt(actionItem.ActionValue);
+                    GameController.Instance.State.CharacterRepuations[GameMapper.CharacterToId(GameController.Instance.State.CurrentCustomer)] -= Mathf.RoundToInt(actionItem.ActionValue);
                     break;
                 case ItemAction.IncreaseItemValue:
                     // Not implemented

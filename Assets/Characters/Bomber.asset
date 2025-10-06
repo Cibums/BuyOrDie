@@ -24,6 +24,7 @@ MonoBehaviour:
     Price: 0
     IsForced: 0
     IsExtinguishable: 1
+    AvailableAlways: 0
     Options:
     - Message: Let explode
       Action: 1

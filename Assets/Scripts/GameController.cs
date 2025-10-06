@@ -131,7 +131,7 @@ public class GameController : MonoBehaviour
         }
 
         Character randomCharacter = AllCharacters[Random.Range(0, AllCharacters.Length)];
-        int characterId = randomCharacter.Id;
+        int characterId = GameMapper.CharacterToId(randomCharacter);
 
         int currentReputation = AllCharacters[characterId].StartReputation;
         if (State.CharacterRepuations.ContainsKey(characterId))
@@ -205,7 +205,7 @@ public class GameController : MonoBehaviour
         State.InTrade = false;
 
         Trade currentTrade = State.CurrentCustomer.PossibleTrades[State.CurrentTradeOfferIndex];
-        State.CharacterRepuations[State.CurrentCustomer.Id] += currentTrade.ReputationIncrease;
+        State.CharacterRepuations[GameMapper.CharacterToId(State.CurrentCustomer)] += currentTrade.ReputationIncrease;
 
         if (currentTrade.TradeType == TradeType.Sell)
         {
@@ -251,7 +251,7 @@ public class GameController : MonoBehaviour
         }
 
         Trade currentTrade = State.CurrentCustomer.PossibleTrades[State.CurrentTradeOfferIndex];
-        State.CharacterRepuations[State.CurrentCustomer.Id] -= currentTrade.ReputationIncrease;
+        State.CharacterRepuations[GameMapper.CharacterToId(State.CurrentCustomer)] -= currentTrade.ReputationIncrease;
 
         SaveNow();
 
